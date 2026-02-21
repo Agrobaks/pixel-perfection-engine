@@ -43,15 +43,22 @@ const Index = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
 
-  const track = tracks[currentTrack];
+  const track = tracks[currentTrack ?? 0];
+
+  const handlePlayPause = useCallback(() => {
+    if (currentTrack === null || currentTrack === undefined) {
+      setCurrentTrack(0);
+    }
+    setIsPlaying((prev) => !prev);
+  }, [currentTrack]);
 
   const handlePrev = useCallback(() => {
-    setCurrentTrack((p) => p === 0 ? tracks.length - 1 : p - 1);
+    setCurrentTrack((p) => (p ?? 0) === 0 ? tracks.length - 1 : (p ?? 0) - 1);
     setIsPlaying(true);
   }, []);
 
   const handleNext = useCallback(() => {
-    setCurrentTrack((p) => p === tracks.length - 1 ? 0 : p + 1);
+    setCurrentTrack((p) => (p ?? 0) === tracks.length - 1 ? 0 : (p ?? 0) + 1);
     setIsPlaying(true);
   }, []);
 
@@ -108,7 +115,7 @@ const Index = () => {
                 <SkipBack size={20} />
               </button>
               <button
-                onClick={() => setIsPlaying(!isPlaying)}
+                onClick={handlePlayPause}
                 className="w-10 h-10 rounded-full flex items-center justify-center play-btn-glow text-primary-foreground transition-all flex-shrink-0"
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
