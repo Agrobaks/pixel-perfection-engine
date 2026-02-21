@@ -170,7 +170,7 @@ const Index = () => {
         <div className="grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
           <span>#</span>
           <span>Title</span>
-          <span className="hidden md:block">Prototype</span>
+          <span className="hidden md:block">Inspiration</span>
           <span className="text-right">Duration</span>
         </div>
 
