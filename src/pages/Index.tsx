@@ -17,12 +17,13 @@ interface Track {
   videoUrl: string;
   coverUrl: string;
   titleUrl: string;
+  prototype: string;
 }
 
 const tracks: Track[] = [
-  { id: 1, title: "Magicblock: Fast & Furious. Smooth. On-chain", artist: "MagicBlock", duration: "2:07", videoUrl: "https://www.youtube.com/watch?v=MI1hEPVODbA", coverUrl: cover1, titleUrl: title1 },
-  { id: 2, title: "MagicBlock: Magic Moments", artist: "MagicBlock", duration: "2:34", videoUrl: "https://www.youtube.com/watch?v=ZmNj2tOAy5U", coverUrl: cover2, titleUrl: title2 },
-  { id: 3, title: "MagicBlock: Fast, Loud & On-Chain!", artist: "MagicBlock", duration: "2:07", videoUrl: "https://www.youtube.com/watch?v=oG1mDdZwQj0", coverUrl: cover3, titleUrl: title3 },
+  { id: 1, title: "Fast & Furious. Smooth. On-chain", artist: "MagicBlock", duration: "2:07", videoUrl: "https://www.youtube.com/watch?v=MI1hEPVODbA", coverUrl: cover1, titleUrl: title1, prototype: "Luis Fonsi - Despacito" },
+  { id: 2, title: "Magic Moments", artist: "MagicBlock", duration: "2:34", videoUrl: "https://www.youtube.com/watch?v=ZmNj2tOAy5U", coverUrl: cover2, titleUrl: title2, prototype: "Perry Como - Magic Moments" },
+  { id: 3, title: "Fast, Loud & On-Chain!", artist: "MagicBlock", duration: "2:07", videoUrl: "https://www.youtube.com/watch?v=oG1mDdZwQj0", coverUrl: cover3, titleUrl: title3, prototype: "The Offspring - The Kids Aren't Alright" },
 ];
 
 const formatTime = (seconds: number) => {
@@ -166,9 +167,10 @@ const Index = () => {
       {/* Track List */}
       <div className="max-w-full">
         {/* Table header */}
-        <div className="grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_6rem] px-4 md:px-8 py-3 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+        <div className="grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
           <span>#</span>
           <span>Title</span>
+          <span className="hidden md:block">Prototype</span>
           <span className="text-right">Duration</span>
         </div>
 
@@ -177,7 +179,7 @@ const Index = () => {
           <div
             key={t.id}
             onClick={() => handleTrackClick(i)}
-            className={`grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_6rem] px-4 md:px-8 py-3 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
+            className={`grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
               i === currentTrack ? "bg-muted/20" : ""
             }`}
           >
@@ -191,6 +193,7 @@ const Index = () => {
                 <p className="text-xs text-muted-foreground truncate">{t.artist}</p>
               </div>
             </div>
+            <span className="hidden md:flex items-center text-xs text-muted-foreground/70 truncate">{t.prototype}</span>
             <span className="flex items-center justify-end text-sm text-muted-foreground tabular-nums">{t.duration}</span>
           </div>
         ))}
