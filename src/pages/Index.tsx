@@ -167,10 +167,10 @@ const Index = () => {
       {/* Track List */}
       <div className="max-w-full">
         {/* Table header */}
-        <div className="grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
+        <div className="grid grid-cols-[3rem_1fr_5rem] lg:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
           <span>#</span>
           <span>Title</span>
-          <span className="hidden md:block">Inspiration</span>
+          <span className="hidden lg:block">Inspiration</span>
           <span className="text-right">Duration</span>
         </div>
 
@@ -179,7 +179,7 @@ const Index = () => {
           <div
             key={t.id}
             onClick={() => handleTrackClick(i)}
-            className={`grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
+            className={`grid grid-cols-[3rem_1fr_5rem] lg:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
               i === currentTrack ? "bg-muted/20" : ""
             }`}
           >
@@ -193,7 +193,7 @@ const Index = () => {
                 <p className="text-xs text-muted-foreground truncate">{t.artist}</p>
               </div>
             </div>
-            <span className="hidden md:flex items-center text-xs text-muted-foreground/70 truncate">{t.prototype}</span>
+            <span className="hidden lg:flex items-center text-xs text-muted-foreground/70 truncate">{t.prototype}</span>
             <span className="flex items-center justify-end text-sm text-muted-foreground tabular-nums">{t.duration}</span>
           </div>
         ))}
