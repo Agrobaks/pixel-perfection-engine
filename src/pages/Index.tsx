@@ -40,17 +40,21 @@ const Index = () => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [played, setPlayed] = useState(0);
+  const [playKey, setPlayKey] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playerRef = useRef<any>(null);
 
   const track = tracks[currentTrack ?? 0];
 
   const handlePlayPause = useCallback(() => {
-    if (currentTrack === null || currentTrack === undefined) {
-      setCurrentTrack(0);
-    }
-    setIsPlaying((prev) => !prev);
-  }, [currentTrack]);
+    setIsPlaying((prev) => {
+      if (!prev) {
+        // Force remount player to bypass mobile autoplay restrictions
+        setPlayKey((k) => k + 1);
+      }
+      return !prev;
+    });
+  }, []);
 
   const handlePrev = useCallback(() => {
     setCurrentTrack((p) => (p ?? 0) === 0 ? tracks.length - 1 : (p ?? 0) - 1);
@@ -150,6 +154,7 @@ const Index = () => {
           <div className="w-full md:w-[60%] flex-shrink-0 border border-muted/30 neon-border-solid rounded-lg overflow-hidden">
             <div className="aspect-video">
               <ReactPlayer
+                key={`${currentTrack}-${playKey}`}
                 ref={playerRef}
                 src={track.videoUrl}
                 playing={isPlaying}
