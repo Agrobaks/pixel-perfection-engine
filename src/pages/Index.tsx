@@ -98,52 +98,52 @@ const Index = () => {
         {/* Control Center */}
         <div className="flex flex-col md:flex-row gap-3 p-3">
           {/* Left: Player Controls (40%) */}
-          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:p-6 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-between">
+          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:p-3 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
             {/* Cover + Info */}
             <div className="flex gap-4">
               <img
                 src={track.titleUrl}
                 alt={track.title}
-                className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover shadow-lg flex-shrink-0"
+                className="w-28 h-28 md:w-[170px] md:h-[170px] rounded-lg object-cover shadow-lg flex-shrink-0"
               />
               <div className="flex-1 min-w-0 flex flex-col justify-center">
                 <p className="text-xs font-semibold tracking-widest text-neon-purple uppercase mb-1">Now Playing</p>
-                <h2 className="text-lg md:text-xl font-extrabold truncate">{track.title}</h2>
-                <p className="text-sm text-muted-foreground truncate">{track.artist}</p>
+                <h2 className="text-lg md:text-2xl font-extrabold truncate">{track.title}</h2>
+                <p className="text-sm md:text-base text-muted-foreground truncate">{track.artist}</p>
               </div>
             </div>
 
             {/* Controls row */}
-            <div className="flex items-center gap-5 mt-5 w-full pl-4">
+            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-3 w-full pl-4">
               <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors">
-                <SkipBack size={20} />
+                <SkipBack className="w-5 h-5 md:w-[30px] md:h-[30px]" />
               </button>
               <button
                 onClick={handlePlayPause}
-                className="w-10 h-10 rounded-full flex items-center justify-center play-btn-glow text-primary-foreground transition-all flex-shrink-0"
+                className="w-10 h-10 md:w-[60px] md:h-[60px] rounded-full flex items-center justify-center play-btn-glow text-primary-foreground transition-all flex-shrink-0"
               >
-                {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                {isPlaying ? <Pause className="w-[18px] h-[18px] md:w-[27px] md:h-[27px]" /> : <Play className="w-[18px] h-[18px] md:w-[27px] md:h-[27px] ml-0.5" />}
               </button>
               <button onClick={handleNext} className="text-muted-foreground hover:text-foreground transition-colors">
-                <SkipForward size={20} />
+                <SkipForward className="w-5 h-5 md:w-[30px] md:h-[30px]" />
               </button>
-              <div className="flex items-center gap-2 ml-auto mr-4">
+              <div className="flex items-center gap-2 md:gap-3 ml-auto mr-4">
                 <button onClick={() => setMuted(!muted)} className="text-muted-foreground hover:text-foreground transition-colors">
-                  {muted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  {muted || volume === 0 ? <VolumeX className="w-4 h-4 md:w-6 md:h-6" /> : <Volume2 className="w-4 h-4 md:w-6 md:h-6" />}
                 </button>
                 <input
                   type="range" min="0" max="1" step="0.01"
                   value={muted ? 0 : volume}
                   onChange={(e) => { setVolume(parseFloat(e.target.value)); setMuted(false); }}
-                  className="w-20 h-1 accent-neon-purple cursor-pointer"
+                  className="w-20 md:w-28 h-1 md:h-1.5 accent-neon-purple cursor-pointer"
                 />
               </div>
             </div>
 
             {/* Progress bar */}
-            <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground w-full">
+            <div className="mt-4 md:mt-3 flex items-center gap-3 text-xs text-muted-foreground w-full">
               <span className="w-10 text-right tabular-nums">{formatTime(played)}</span>
-              <div className="flex-1 h-1 bg-muted rounded-full cursor-pointer relative" onClick={handleSeek}>
+              <div className="flex-1 h-1 md:h-1.5 bg-muted rounded-full cursor-pointer relative" onClick={handleSeek}>
                 <div className="h-full progress-neon rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
               </div>
               <span className="w-10 tabular-nums">{formatTime(duration)}</span>
