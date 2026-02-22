@@ -96,15 +96,15 @@ const Index = () => {
         </header>
 
         {/* Control Center */}
-        <div className="flex flex-col md:flex-row gap-3 p-3">
+        <div className="flex flex-col md:flex-row gap-3 p-3 md:p-2">
           {/* Left: Player Controls (40%) */}
-          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:p-6 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-between">
+          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:p-4 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-between">
             {/* Cover + Info */}
             <div className="flex gap-4">
               <img
                 src={track.titleUrl}
                 alt={track.title}
-                className="w-28 h-28 md:w-32 md:h-32 rounded-lg object-cover shadow-lg flex-shrink-0"
+                className="w-28 h-28 md:w-28 md:h-28 rounded-lg object-cover shadow-lg flex-shrink-0"
               />
               <div className="flex-1 min-w-0 flex flex-col justify-center">
                 <p className="text-xs font-semibold tracking-widest text-neon-purple uppercase mb-1">Now Playing</p>
@@ -114,34 +114,34 @@ const Index = () => {
             </div>
 
             {/* Controls row */}
-            <div className="flex items-center gap-5 mt-5 w-full pl-4">
+            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-5 w-full pl-4">
               <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors">
-                <SkipBack size={20} />
+                <SkipBack className="size-5 md:size-[30px]" />
               </button>
               <button
                 onClick={handlePlayPause}
-                className="w-10 h-10 rounded-full flex items-center justify-center play-btn-glow text-primary-foreground transition-all flex-shrink-0"
+                className="w-10 h-10 md:w-[60px] md:h-[60px] rounded-full flex items-center justify-center play-btn-glow text-primary-foreground transition-all flex-shrink-0"
               >
-                {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+                {isPlaying ? <Pause className="size-[18px] md:size-[27px]" /> : <Play className="size-[18px] md:size-[27px] ml-0.5" />}
               </button>
               <button onClick={handleNext} className="text-muted-foreground hover:text-foreground transition-colors">
-                <SkipForward size={20} />
+                <SkipForward className="size-5 md:size-[30px]" />
               </button>
               <div className="flex items-center gap-2 ml-auto mr-4">
                 <button onClick={() => setMuted(!muted)} className="text-muted-foreground hover:text-foreground transition-colors">
-                  {muted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                  {muted || volume === 0 ? <VolumeX className="size-4 md:size-6" /> : <Volume2 className="size-4 md:size-6" />}
                 </button>
                 <input
                   type="range" min="0" max="1" step="0.01"
                   value={muted ? 0 : volume}
                   onChange={(e) => { setVolume(parseFloat(e.target.value)); setMuted(false); }}
-                  className="w-20 h-1 accent-neon-purple cursor-pointer"
+                  className="w-20 md:w-28 h-1 md:h-2 accent-neon-purple cursor-pointer"
                 />
               </div>
             </div>
 
             {/* Progress bar */}
-            <div className="mt-5 flex items-center gap-3 text-xs text-muted-foreground w-full">
+            <div className="mt-5 md:mt-8 flex items-center gap-3 text-xs text-muted-foreground w-full">
               <span className="w-10 text-right tabular-nums">{formatTime(played)}</span>
               <div className="flex-1 h-1 bg-muted rounded-full cursor-pointer relative" onClick={handleSeek}>
                 <div className="h-full progress-neon rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
@@ -191,7 +191,7 @@ const Index = () => {
           <div
             key={t.id}
             onClick={() => handleTrackClick(i)}
-            className={`grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
+            className={`grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_6rem] px-4 md:px-8 py-3 md:py-4 cursor-pointer transition-all duration-200 track-row-hover border-b border-muted/10 ${
               i === currentTrack ? "bg-muted/20" : ""
             }`}
           >
@@ -199,7 +199,7 @@ const Index = () => {
               {i + 1}
             </span>
             <div className="flex items-center gap-3 min-w-0">
-              <img src={t.titleUrl} alt={t.title} className="w-10 h-10 rounded object-cover flex-shrink-0" />
+              <img src={t.titleUrl} alt={t.title} className="w-10 h-10 md:w-12 md:h-12 rounded object-cover flex-shrink-0" />
               <div className="min-w-0">
                 <p className={`text-sm font-semibold truncate ${i === currentTrack ? "text-neon-purple" : ""}`}>{t.title}</p>
                 <p className="text-xs text-muted-foreground truncate">{t.artist}</p>
