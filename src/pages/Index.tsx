@@ -98,7 +98,7 @@ const Index = () => {
         {/* Control Center */}
         <div className="flex flex-col md:flex-row gap-3 p-3 md:p-2">
           {/* Left: Player Controls (40%) */}
-          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:px-4 md:py-2 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
+          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:px-4 md:py-1 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center md:max-h-[220px]">
             {/* Cover + Info */}
             <div className="flex gap-4">
               <img
@@ -114,7 +114,7 @@ const Index = () => {
             </div>
 
             {/* Controls row */}
-            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-2 w-full pl-4">
+            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-1 md:mb-4 w-full pl-4">
               <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors">
                 <SkipBack className="w-5 h-5 md:w-[30px] md:h-[30px]" />
               </button>
@@ -151,7 +151,7 @@ const Index = () => {
           </div>
 
           {/* Right: Video Player (60%) */}
-          <div className="w-full md:w-[60%] flex-shrink-0 border border-muted/30 neon-border-solid rounded-lg overflow-hidden">
+          <div className="w-full md:w-[60%] flex-shrink-0 border border-muted/30 neon-border-solid rounded-lg overflow-hidden md:max-h-[220px]">
             <div className="aspect-video">
               <ReactPlayer
                 key={`${currentTrack}-${playKey}`}
