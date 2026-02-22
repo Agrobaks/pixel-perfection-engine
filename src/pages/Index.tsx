@@ -86,7 +86,7 @@ const Index = () => {
       {/* Sticky top section */}
       <div className="sticky top-0 z-50 glass-panel border-b neon-border-solid">
         {/* Header */}
-        <header className="flex items-center justify-between px-4 md:px-8 py-3 border-b border-muted/30">
+        <header className="flex items-center justify-between px-4 md:px-8 py-3 md:py-2 border-b border-muted/30">
           <div className="flex items-center gap-3">
             <img src={logo} alt="MagicBlock Records" className="h-8 md:h-10 w-auto" />
           </div>
@@ -96,15 +96,15 @@ const Index = () => {
         </header>
 
         {/* Control Center */}
-        <div className="flex flex-col md:flex-row gap-3 p-3">
+        <div className="flex flex-col md:flex-row gap-3 p-3 md:p-2">
           {/* Left: Player Controls (40%) */}
-          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:p-3 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
+          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:px-4 md:py-2 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
             {/* Cover + Info */}
             <div className="flex gap-4">
               <img
                 src={track.titleUrl}
                 alt={track.title}
-                className="w-28 h-28 md:w-[170px] md:h-[170px] rounded-lg object-cover shadow-lg flex-shrink-0"
+                className="w-28 h-28 md:w-[140px] md:h-[140px] rounded-lg object-cover shadow-lg flex-shrink-0"
               />
               <div className="flex-1 min-w-0 flex flex-col justify-center">
                 <p className="text-xs font-semibold tracking-widest text-neon-purple uppercase mb-1">Now Playing</p>
@@ -114,7 +114,7 @@ const Index = () => {
             </div>
 
             {/* Controls row */}
-            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-3 w-full pl-4">
+            <div className="flex items-center gap-5 md:gap-7 mt-4 md:mt-2 w-full pl-4">
               <button onClick={handlePrev} className="text-muted-foreground hover:text-foreground transition-colors">
                 <SkipBack className="w-5 h-5 md:w-[30px] md:h-[30px]" />
               </button>
@@ -141,7 +141,7 @@ const Index = () => {
             </div>
 
             {/* Progress bar */}
-            <div className="mt-4 md:mt-3 flex items-center gap-3 text-xs text-muted-foreground w-full">
+            <div className="mt-4 md:mt-5 flex items-center gap-3 text-xs text-muted-foreground w-full">
               <span className="w-10 text-right tabular-nums">{formatTime(played)}</span>
               <div className="flex-1 h-1 md:h-1.5 bg-muted rounded-full cursor-pointer relative" onClick={handleSeek}>
                 <div className="h-full progress-neon rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
