@@ -96,9 +96,9 @@ const Index = () => {
         </header>
 
         {/* Control Center */}
-        <div className="flex flex-col md:flex-row gap-3 p-3 md:p-2">
+        <div className="flex flex-col md:flex-row gap-3 p-3 md:p-1">
           {/* Left: Player Controls (40%) */}
-          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:px-4 md:py-2 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
+          <div className="w-full md:w-[40%] flex-shrink-0 p-5 md:px-3 md:py-1 border border-muted/30 neon-border-solid rounded-lg flex flex-col justify-center">
             {/* Cover + Info */}
             <div className="flex gap-4">
               <img
